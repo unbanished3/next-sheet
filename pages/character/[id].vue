@@ -1,6 +1,6 @@
 <template>
     <div class="w-screen flex justify-center items-center">
-        <div class="w-full md:w-2/3 flex justify-center flex-col space-x-4 md:pt-24">
+        <div class="w-full md:w-2/3 flex justify-center flex-col gap-4 md:pt-24">
             <div class="w-full flex flex-row gap-4 flex-wrap items-stretch">
                 <UCard>
                     <template #header>
@@ -136,9 +136,34 @@
                             </li>
                             <UButton @click="addHindrance()">Добавить недостаток</UButton>
                         </div>
+                        <UDivider />
+                        <div class="w-full text-center flex flex-col gap-4">
+                            <label>Черты</label>
+                            <li v-for="trait, index in data.character.data.edges" class="list-none">
+                                <UInput v-model="data.character.data.edges[index].name" label="Черта" color="gray" placeholder="Черта"/>
+                            </li>
+                            <UButton @click="addEdge()">Добавить черту</UButton>
+                        </div>
                     </UContainer>
                 </UCard>
             </div>
+            <div >
+                <UCard>
+                    <template #header>
+                        <div class="text-center">
+                            Способности
+                        </div>
+                    </template>
+
+                    <UContainer class="flex flex-col gap-4 !px-0 h-full">
+                        <UContainer class="flex flex-row gap-2 !px-0 !pt-0" v-for="power, index in data.character.data.powers">
+                            <UInput v-model="data.character.data.powers[index].name" label="Способность" color="gray" placeholder="Способность"/>
+
+                        </UContainer>
+                    </UContainer>
+                </UCard>
+            </div>
+            
         </div>
     </div>
 </template>
@@ -192,6 +217,13 @@
     const addHindrance = (name = "") => {
         data.value.character.data.hindrances.push({
             name
+        })
+    }
+
+    const addEdge = (name = "", description = "") => {
+        data.value.character.data.edges.push({
+            name,
+            description
         })
     }
 
