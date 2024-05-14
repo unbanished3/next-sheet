@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
         return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized' }))
     }
 
-    let character = await Character.create()
+    let character = await Character.create({userId: user.id})
 
     return character.toJSON()
 })

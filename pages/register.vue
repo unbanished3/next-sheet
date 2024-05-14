@@ -1,6 +1,6 @@
 <template>
     <div class="w-screen flex justify-center items-center">
-        <UForm :state="registrerData" :schema="schema" class="space-y-4 p-8 bg-neutral-800 rounded-2xl" @submit="submit">
+        <UForm :state="registrerData" :schema="schema" class="space-y-4 p-8 bg-neutral-800 rounded-2xl md:mt-24" @submit="submit">
             <UFormGroup label="Логин" name="login">
                 <UInput placeholder="Логин" v-model="registrerData.login" />
             </UFormGroup>
@@ -23,10 +23,22 @@
     
 </template>
 
-<script setup lang="ts">
+<script setup>
 
-    import { ref } from 'vue'
+    import { ref, onMounted } from 'vue'
     import { object, string, ref as rf } from 'yup'
+    import nuxtStorage from 'nuxt-storage'
+    import { useRouter } from 'vue-router'
+
+    let router = useRouter()
+
+    let token = useCookie('token')
+
+    onMounted(() => {
+        if (token.value) {
+            router.push('/')
+        }
+    })
 
     let registrerData = ref({
         login: '',
@@ -53,6 +65,8 @@
             return
         }
 
-        localStorage.setItem('token', responce.token)
+        nuxtStorage.localStorage.setData('token', responce.token)
+
+        router.push('/')
     }
 </script>

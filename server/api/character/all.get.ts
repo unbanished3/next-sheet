@@ -26,6 +26,8 @@ export default defineEventHandler(async (event) => {
 
     let characters = await Character.findAll({ where: { userId: user.id } })
 
+    console.log(characters)
+
     let characters_data = characters.map((character: typeof Character) => {
         return {
             id: character.id,

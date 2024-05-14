@@ -1,15 +1,16 @@
 <template>
     <div>
         <main>
-            <h1 class="text-3xl font-bold underline">Fuck You</h1>
+            <ServerProfile v-if="isRegistered" />
+            <LocalProfile v-else />
         </main>
     </div>
 </template>
 
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import nuxtStorage from 'nuxt-storage'
+import ServerProfile from '../components/ServerProfile.vue'
+import LocalProfile from '../components/LocalProfile.vue'
 
-let username = ref(nuxtStorage.localStorage.getData('username'))
+let isRegistered = useCookie('token')
 </script>
