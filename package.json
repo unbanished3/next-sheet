@@ -21,6 +21,7 @@
     "@types/yup": "^0.32.0",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
+    "node-fetch-native": "^1.6.4",
     "nuxt-storage": "^1.2.2",
     "pg": "^8.11.5",
     "pg-hstore": "^2.3.4",
