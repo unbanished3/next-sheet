@@ -1,9 +1,6 @@
 import Sequelize from 'sequelize'
-import { createRequire } from 'module'
-let require = createRequire(import.meta.url)
 
 const sequelize = new Sequelize({
-    dialectModule: require('pg'),
     dialect: 'postgres',
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
