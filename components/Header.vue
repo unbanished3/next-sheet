@@ -1,6 +1,6 @@
 <template>
     <div class="header flex justify-between p-2 bg-neutral-800 items-center">
-        <img class="logo rounded size-12" src="" alt="logo">
+        <img class="logo rounded h-12 cursor-pointer" src="/logo.png" alt="logo" @click="router.push('/')">
         <div class="navigation flex justify-between gap-4 items-center" v-if="!token">
             <NuxtLink to="/register">Зарегистрироваться</NuxtLink>
             <NuxtLink to="/login">Войти</NuxtLink>

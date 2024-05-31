@@ -32,5 +32,5 @@ export default defineEventHandler(async (event) => {
 
     await character.destroy()
 
-    return
+    return { message: 'Character deleted' }
 })

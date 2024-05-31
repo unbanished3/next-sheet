@@ -1,5 +1,5 @@
 import jwt, { Secret } from 'jsonwebtoken'
-import { User, Character} from '../../database'
+import { User, Character} from '../../../database'
 
 export default defineEventHandler(async (event) => {
     let token = getHeaders(event).authorization
@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
         return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized' }))
     }
 
-    let queryData = getQuery(event)
+    let data = await readBody(event)
     let id = getRouterParams(event).id
 
     let character = await Character.findOne({ where: { id, userId: user.id } })
@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
     }
 
     character.set({
-        data: queryData
+        data
     })
 
     await character.save()

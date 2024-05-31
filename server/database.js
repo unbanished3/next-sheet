@@ -70,7 +70,7 @@ const defaultSkill = sequelize.define('defaultSkill', {
     description: {
         type: Sequelize.TEXT
     }
-})
+}, {timestamps: false})
 
 const defaultEdge = sequelize.define('defaultEdges', {
     name: {
@@ -83,7 +83,7 @@ const defaultEdge = sequelize.define('defaultEdges', {
         type: Sequelize.STRING,
         allowNull: true
     }
-})
+}, {timestamps: false})
 
 const defaultWeapon = sequelize.define('defaultWeapon', {
     name: {
@@ -108,7 +108,7 @@ const defaultWeapon = sequelize.define('defaultWeapon', {
     rateOfFire: {
         type: Sequelize.STRING
     }
-})
+}, {timestamps: false})
 
 const defaultPower = sequelize.define('defaultPower', {
     name: {
@@ -126,7 +126,7 @@ const defaultPower = sequelize.define('defaultPower', {
     range: {
         type: Sequelize.STRING
     }
-})
+}, {timestamps: false})
 
 const defaultHindrance = sequelize.define('defaultHindrance', {
     name: {
@@ -138,11 +138,11 @@ const defaultHindrance = sequelize.define('defaultHindrance', {
     cost: {
         type: Sequelize.STRING
     }
-})
+}, {timestamps: false})
 
 User.hasMany(Character)
 Character.belongsTo(User)
 
-sequelize.sync()
+sequelize.sync({ alter: true })
 
 export { User, Character, defaultSkill, defaultEdge, defaultWeapon, defaultPower, defaultHindrance }

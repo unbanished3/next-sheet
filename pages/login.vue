@@ -9,7 +9,7 @@
                 <UInput type="password" placeholder="Пароль" v-model="registrerData.password" />
             </UFormGroup>
 
-            <UButton type="submit">Зарегистрироваться</UButton>
+            <UButton type="submit">Войти</UButton>
         </UForm>
     </div>
     

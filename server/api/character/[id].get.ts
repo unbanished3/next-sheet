@@ -92,14 +92,5 @@ export default defineEventHandler(async (event) => {
         }
     })
 
-    let data = {
-        character: character.toJSON(),
-        default_skills: def_skills,
-        default_edges: def_edges,
-        default_weapons: def_weapons,
-        default_powers: def_powers,
-        default_hindrances: def_hindrances
-    }
-
-    return data
+    return character.toJSON()
 })

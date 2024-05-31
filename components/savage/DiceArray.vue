@@ -4,7 +4,7 @@
             :name="icon_list[value - 1]" 
             size="1.7rem" 
             class="hover:invert-[0.3] hover:sepia-[1] cursor-pointer" 
-            @click="toast.add({title: diceThrow(value, modifier), color: 'success'})"
+            @click="toast.add({title: diceThrow(value, modifier)})"
         />
         <URadioGroup v-model="value" :options="options" class="group"/>
         <UInput type="number" class="w-16" color="gray" v-model="modifier"/>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-    import { diceThrow } from '../utils/diceThrow.js'
+    import { diceThrow } from '../../utils/diceThrow.js'
 
     const options = [
         {value: 1, label: ''},
@@ -45,5 +45,6 @@
         gap: 0.3rem !important;
         padding: 0;
         margin: 0;
+        cursor: pointer;
     }
 </style>
